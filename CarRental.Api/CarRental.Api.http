@@ -1,0 +1,69 @@
+@host = http://localhost:5205
+
+### Listar todos los autos
+GET {{host}}/api/autos
+Accept: application/json
+
+###
+
+### Buscar un auto por ID
+GET {{host}}/api/autos/2
+Accept: application/json
+
+###
+
+### Registrar un auto valido
+POST {{host}}/api/autos
+Content-Type: application/json
+
+{
+  "marca": "Mercedes Benz",
+  "modelo": "E 320",
+  "precio": 60.00,
+  "year": 2015
+}
+
+###
+
+### Registrar un auto antiguo (debe fallar)
+POST {{host}}/api/autos
+Content-Type: application/json
+
+{
+  "marca": "BMW",
+  "modelo": "M3",
+  "precio": 60.00,
+  "year": 2022
+}
+
+###
+
+### Actualizar un auto existente
+PUT {{host}}/api/autos/2
+Content-Type: application/json
+
+{
+  "id": 2,
+  "marca": "Mercedes Benz",
+  "modelo": "E 320",
+  "precio": 50.00,
+  "year": 2021
+}
+
+###
+
+### Eliminar un auto
+DELETE {{host}}/api/autos/1
+
+###
+
+### Registrar alquiler (pendiente de implementar)
+POST {{host}}/api/alquileres
+Content-Type: application/json
+
+{
+  "usuarioId": 1,
+  "autoId": 1,
+  "fechaInicio": "2026-12-10T10:00:00",
+  "fechaFin": "2026-12-14T10:00:00"
+}
